@@ -42,6 +42,22 @@ wasm-tools print target/wasm32-wasi/debug/hello.wasm | grep "(export"
   (export "__main_void" (func $__main_void))
 ```
 
+## Build and Run wasm/wasi lib
+
+```sh
+# build .wasm
+cargo wasi build
+
+# run .wasm
+wasmtime --invoke print_hello target/wasm32-wasi/debug/hellolib.wasm
+
+# show export methods
+wasm-tools print target/wasm32-wasi/debug/hellolib.wasm | grep "(export"
+  (export "memory" (memory 0))
+  (export "print_hello" (func $print_hello.command_export))
+  (export "add" (func $add.command_export))
+```
+
 ## References
 
 - [wasmtime](https://github.com/bytecodealliance/wasmtime)
