@@ -58,6 +58,14 @@ wasm-tools print target/wasm32-wasi/debug/hellolib.wasm | grep "(export"
   (export "add" (func $add.command_export))
 ```
 
+## Python call wasm lib
+
+```sh
+cp target/wasm32-wasi/debug/hellolib.wasm .
+pip install wasmtime
+python src/test.py
+```
+
 ## References
 
 - [wasmtime](https://github.com/bytecodealliance/wasmtime)
